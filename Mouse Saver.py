@@ -86,9 +86,6 @@ elif os.name == 'posix':  # macOS or Linux
             self.saved_position = None
             self.mouse_controller = mouse.Controller()
 
-            # Add menu item
-            self.menu = ["Quit"]
-
             # Register hotkeys
             self.listener = keyboard.GlobalHotKeys({
                 "<ctrl>+<alt>+<shift>+7": self.save_position,
