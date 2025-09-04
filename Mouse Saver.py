@@ -82,7 +82,7 @@ elif os.name == 'posix':  # macOS or Linux
 
     class MouseSaverApp(rumps.App):
         def __init__(self):
-            super(MouseSaverApp, self).__init__("MouseSaver", icon="icon.icns")  # you can set .icns icon
+            super(MouseSaverApp, self).__init__("MouseSaver", icon="icon.icns")
             self.saved_position = None
             self.mouse_controller = mouse.Controller()
 
