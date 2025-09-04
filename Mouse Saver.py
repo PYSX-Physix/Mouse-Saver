@@ -5,6 +5,8 @@ import pystray
 from PIL import Image, ImageDraw
 from plyer import notification
 import threading
+import tkinter
+from tkinter import messagebox
 
 # Globals
 saved_position = None
@@ -12,7 +14,7 @@ running = True
 
 
 # ---------- Icon ----------
-def load_icon(path="icon.ico"):
+def load_icon(path=".\\Resources\\icon.ico"):
     return Image.open(path)
 
 # ---------- Notifications ----------
@@ -33,11 +35,6 @@ def restore_position():
         pyautogui.moveTo(saved_position[0], saved_position[1])
 
 # ---------- Tray ----------
-def create_image():
-    img = Image.new("RGB", (64, 64), (0, 0, 0))
-    d = ImageDraw.Draw(img)
-    d.ellipse((16, 16, 48, 48), fill=(30, 144, 255))
-    return img
 
 def quit_app(icon, item):
     global running
@@ -45,12 +42,26 @@ def quit_app(icon, item):
     icon.visible = False
     icon.stop()
 
+def show_help():
+    root = tkinter.Tk()
+    root.geometry("400x100")
+    root.title("Mouse Saver Help")
+    root.iconbitmap(".\\Resources\\icon.ico")
+    root.resizable(False, False)
+    root.focus_force()
+    helptext = tkinter.Label(root)
+    helptext["text"] = "\nSave Position: Ctrl + Alt + Shift + M\nRestore Position: Ctrl + Alt + M"
+    helptext.pack()
+    root.mainloop()
+
+
 def setup_tray():
-    icon_image = load_icon(".\\Resources\\icon.ico")
+    icon_image = load_icon()
     icon = pystray.Icon(
-        "MouseSaver",
+        "Mouse Saver",
         icon_image,
         menu=pystray.Menu(
+            pystray.MenuItem("Help", show_help),
             pystray.MenuItem("Quit", quit_app)
         )
     )

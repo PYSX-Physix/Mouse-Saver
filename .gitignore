@@ -1,2 +1,5 @@
 .venv
+Mouse Saver.iss
 Package.bat
+/build
+/dist
