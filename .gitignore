@@ -1,4 +1,5 @@
 .venv
+.DS_Store
 Mouse Saver.iss
 Package.bat
 /build
