@@ -1,0 +1,1 @@
+pyinstaller --onefile --noconsole --icon=".\icon.ico" --add-data ".\.venv\Lib\site-packages\plyer;plyer" "Mouse Saver.py"
