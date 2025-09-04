@@ -79,7 +79,6 @@ if os.name == 'nt':  # Windows
 elif os.name == 'posix':  # macOS or Linux
     import rumps
     from pynput import keyboard, mouse
-    import pync
 
     class MouseSaverApp(rumps.App):
         def __init__(self):
@@ -99,12 +98,10 @@ elif os.name == 'posix':  # macOS or Linux
 
         def save_position(self):
             self.saved_position = self.mouse_controller.position
-            pync.notify(f"Saved position: {self.saved_position}", title="Mouse Saver")
 
         def restore_position(self):
             if self.saved_position:
                 self.mouse_controller.position = self.saved_position
-                pync.notify(f"Restored to: {self.saved_position}", title="Mouse Saver")
 
         @rumps.clicked("Quit")
         def quit_app(self, _):
